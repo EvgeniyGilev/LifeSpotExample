@@ -97,6 +97,12 @@ form {
         background: #F9F0DA;
         color: #111;
     }
+        .search1 input:hover {
+            background: white;
+        }
+        .search1 input:focus {
+            background: white;
+        }
 
     .search1 button {
         position: absolute;
