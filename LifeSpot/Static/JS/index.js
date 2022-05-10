@@ -3,7 +3,7 @@
 * Также блокирует доступ к сайту лицам, не подтвердившим свой возраст
 *
 * */
-function handleSession() {
+let sessionHandler = function handleSession() {
 
     // создадим объект Map для хранения сессии
     let session = new Map();
@@ -31,7 +31,7 @@ function handleSession() {
 }
 
 // Функция для фильтрации контента
-function filterContent() {
+let contentFilter = function filterContent() {
     let inputString = document.getElementsByTagName('input')[0].value.toLowerCase();
     let elements = document.getElementsByClassName('video-container');
     for (let i = 0; i < elements.length; i++) {
