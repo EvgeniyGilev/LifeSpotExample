@@ -18,11 +18,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
     <script src="./Static/JS/index.js"></script>
-    <script>  
-        //let session = handleSession();
-        // Логируем в консоль.
-        //sessionLog(session)
-    </script>
 </head>
 <body>
     <!--Хедер страницы-->
@@ -32,16 +27,21 @@
         <!--Параграф-->
         <p>Покажем, что происходит прямо сейчас</p>
     </header>
-    <div class="search1">
-        <script>
-            // let session = handleSession();
-            // sessionLog(session)
+    <script>
+        // Проверка на возраст
+        checkAge();
 
-            // Функция объявлена через declaration
-            const inputParseFunction = function () {
-                return document.getElementsByTagName('input')[0].value.toLowerCase();
-            }
-        </script>
+        // сохранение сессии
+        handleSession()
+
+        // вывод данных сессии в консоль
+        sessionLog();
+        // функция для получения пользовательского ввода
+        const inputParseFunction = function () {
+            return document.getElementsByTagName('input')[0].value.toLowerCase();
+        }
+    </script>
+    <div class="search1">
         <form>
             <input type="text" placeholder="Искать здесь..." oninput="
     //filterContent(document.getElementsByTagName('input')[0].value.toLowerCase())
