@@ -19,9 +19,9 @@
     <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
     <script src="./Static/JS/index.js"></script>
     <script>  
-        let session = handleSession();
+        //let session = handleSession();
         // Логируем в консоль.
-        sessionLog(session)
+        //sessionLog(session)
     </script>
 </head>
 <body>
@@ -33,8 +33,26 @@
         <p>Покажем, что происходит прямо сейчас</p>
     </header>
     <div class="search1">
+        <script>
+            // let session = handleSession();
+            // sessionLog(session)
+
+            // Функция объявлена через declaration
+            const inputParseFunction = function () {
+                return document.getElementsByTagName('input')[0].value.toLowerCase();
+            }
+        </script>
         <form>
-            <input type="text" placeholder="Искать здесь..." oninput="filterContent(document.getElementsByTagName('input')[0].value.toLowerCase())">
+            <input type="text" placeholder="Искать здесь..." oninput="
+    //filterContent(document.getElementsByTagName('input')[0].value.toLowerCase())
+           //const inputParseFunction = function(){
+           //return document.getElementsByTagName('input')[0].value.toLowerCase();
+      // }
+
+       // Вызов (функция в аргумент передаётся без круглых скобок)
+    filterContent(inputParseFunction)
+
+    ">
             <button type="submit"></button>
         </form>
     </div>
