@@ -3,7 +3,7 @@
 * Также блокирует доступ к сайту лицам, не подтвердившим свой возраст
 *
 * */
-let sessionHandler = function handleSession() {
+function handleSession() {
 
     // создадим объект Map для хранения сессии
     let session = new Map();
@@ -24,22 +24,29 @@ let sessionHandler = function handleSession() {
         alert("Наши трансляции не предназначены для лиц моложе 18 лет. Вы будете перенаправлены");
         window.location.href = "http://www.google.com"
     }
-    // Вывод в консоль
-    for (let result of session) {
-        console.log(result)
-    }
+
+    // Теперь мы возвращаем объект сессии, который потом выведем в консоль через другую функцию
+    return session;
 }
 
 // Функция для фильтрации контента
-let contentFilter = function filterContent() {
+function filterContent(userInput) {
     let inputString = document.getElementsByTagName('input')[0].value.toLowerCase();
     let elements = document.getElementsByClassName('video-container');
     for (let i = 0; i < elements.length; i++) {
         let videoText = elements[i].querySelector('.video-title').innerText;
-        if (!videoText.toLowerCase().includes(inputString.toLowerCase())) {
+        if (!videoText.toLowerCase().includes(userInput)) {
             elements[i].style.display = 'none';
         } else {
             elements[i].style.display = 'inline-block';
         }
+    }
+}
+
+// Логирование сессии
+let sessionLog = function logSession(session) {
+    // Вывод в консоль
+    for (let result of session) {
+        console.log(result)
     }
 }
