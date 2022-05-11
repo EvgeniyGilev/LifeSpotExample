@@ -17,9 +17,9 @@
      </style>-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
+    <script src="./Static/JS/index.js"></script>
 </head>
 <body>
-    <script src="./Static/JS/index.js"></script>
     <!--Хедер страницы-->
     <header>
         <!--Заголовок страницы-->
@@ -27,9 +27,32 @@
         <!--Параграф-->
         <p>Покажем, что происходит прямо сейчас</p>
     </header>
+    <script>
+        // Проверка на возраст
+        // checkAge();
+
+        // сохранение сессии
+        handleSession()
+
+        // вывод данных сессии в консоль
+        sessionLog();
+        // функция для получения пользовательского ввода
+        const inputParseFunction = function () {
+            return document.getElementsByTagName('input')[0].value.toLowerCase();
+        }
+    </script>
     <div class="search1">
         <form>
-            <input type="text" placeholder="Искать здесь...">
+            <input type="text" placeholder="Искать здесь..." oninput="
+    //filterContent(document.getElementsByTagName('input')[0].value.toLowerCase())
+           //const inputParseFunction = function(){
+           //return document.getElementsByTagName('input')[0].value.toLowerCase();
+      // }
+
+       // Вызов (функция в аргумент передаётся без круглых скобок)
+    filterContent(inputParseFunction)
+
+    ">
             <button type="submit"></button>
         </form>
     </div>
@@ -48,16 +71,8 @@
         </div>
     </div>
     <!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
-    <aside id="sidebar">
-        <div class="navbar">
-            <a href="/"><p>Все трансляции</p></a>
-            <a href="/"><p>О проекте</p></a>
-        </div>
-    </aside>
+    <!--SIDEBAR-->
     <!--Футер страницы находится под основной частью (body)-->
-    <footer>
-        <p>LifeSpot - все права защищены</p>
-        <p>Связаться с нами: contact@lifespot.ru</p>
-    </footer>
+    <!--FOOTER-->
 </body>
 </html>
