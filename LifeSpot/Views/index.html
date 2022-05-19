@@ -32,10 +32,8 @@
         // checkAge();
 
         // сохранение сессии
-        handleSession()
+        handleSession(logger, checker /* Коллбек-функции */);
 
-        // вывод данных сессии в консоль
-        sessionLog();
         // функция для получения пользовательского ввода
         const inputParseFunction = function () {
             return document.getElementsByTagName('input')[0].value.toLowerCase();

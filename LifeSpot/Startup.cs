@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.FileProviders;
 
 namespace LifeSpot
 {
@@ -20,10 +21,16 @@ namespace LifeSpot
                 app.UseDeveloperExceptionPage();
 
             app.UseRouting();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Static/Images")), // указываем физический путь до папки с файлами
+                RequestPath = "/Static/Images" // запросы по этому url будут соотносится с файлами из указанной директории
+            });
 
-            // Загружаем отдельные элементы для вставки в шаблон: боковое меню и футер
+            // Загружаем отдельные элементы для вставки в шаблон: боковое меню и футер, слайдер
             string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
             string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sideBar.html"));
+            string sliderHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "slider.html"));
 
             app.UseEndpoints(endpoints =>
             {
@@ -58,7 +65,8 @@ namespace LifeSpot
                     // Загружаем шаблон страницы, вставляя в него элементы
                     var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                         .Replace("<!--SIDEBAR-->", sideBarHtml)
-                        .Replace("<!--FOOTER-->", footerHtml);
+                        .Replace("<!--FOOTER-->", footerHtml)
+                        .Replace("<!--SLIDER-->", sliderHtml);
 
                     await context.Response.WriteAsync(html.ToString());
                 });
@@ -90,6 +98,7 @@ namespace LifeSpot
                     var js = await File.ReadAllTextAsync(jsPath);
                     await context.Response.WriteAsync(js);
                 });
+    
             });
         }
     }
